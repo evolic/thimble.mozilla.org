@@ -28,10 +28,10 @@
       <div class="right-box">
         <h2>{{ gettext("whyContributeTitle") }}</h2>
         <ul>
-          <li>{{ gettext("contributeReason1") }}</li>
-          <li>{{ gettext("contributeReason2") }}</li>
-          <li>{{ gettext("contributeReason3") }}</li>
-          <li>{{ gettext("contributeReason4") }}</li>
+          <li>{{ gettext("contributeReason1") | safe }}</li>
+          <li>{{ gettext("contributeReason2") | safe }}</li>
+          <li>{{ gettext("contributeReason3") | safe }}</li>
+          <li>{{ gettext("contributeReason4") | safe }}</li>
         </ul>
       </div>
 
@@ -40,8 +40,14 @@
           {% set mozillaFoundationURL = "https://www.mozilla.org/foundation/" %}
           {% set cdotURL = "https://cdot.senecacollege.ca/" %}
           {{ gettext("getInvolvedDescription1") | instantiate | safe }}
-          <br/>
-          {{ gettext("getInvolvedDescription2") | safe }}
+        </p>
+
+        <p>
+          {% set numberOfReadyLocalizations = gettext("numberOfReadyLocalizations", 33) %}
+          {% set numberOfLocalizationsInProgress = gettext("numberOfLocalizationsInProgress", 100) %}
+          {% set numberOfCountriesWhenItsUsed = gettext("numberOfCountriesWhenItsUsed", 200) %}
+
+          {{ gettext("getInvolvedDescription2") | instantiate | safe }}
         </p>
 
         <h3>{{ gettext("noContributionTooSmallTitle") }}</h3>
@@ -57,11 +63,11 @@
         </ul>
 
         <p>
-          <a class="blue-button" href="https://github.com/mozilla/thimble.mozilla.org/issues/new">{{ gettext("goFileAnIssueBtn") }}</a>
+          <a class="blue-button" href="https://github.com/mozilla/thimble.mozilla.org/issues/new">{{ gettext("goFileAnIssueBtn") | safe }}</a>
         </p>
 
         <p>
-          {{ gettext("feelingAdventurous") }}
+          {{ gettext("feelingAdventurous") | safe }}
         </p>
 
         <div class="two-col">
@@ -102,7 +108,10 @@
       <h2>{{ gettext("featuredContributors") }}</h2>
 
       <p>
-        {{ gettext("featuredContributorsDesc") | safe }}
+        {% set numberOfContributors = gettext("numberOfContributors", 350) %}
+        {% set numberOfContributorCountries = gettext("numberOfContributorCountries", 30) %}
+
+        {{ gettext("featuredContributorsDesc") | instantiate | safe }}
       </p>
 
       <div class="contributor-list">
